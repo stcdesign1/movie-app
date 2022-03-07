@@ -16,7 +16,7 @@ const Movies = ({movieData}) => {
         return (
             <Link 
               to={{
-                pathname: `/movie/${movie.imdbID}`,
+                pathname: `/movie-app/movie/${movie.imdbID}`,
                 state: {
                   movieDetails: movie,
                 },

@@ -98,7 +98,7 @@ const SingleMovie = () => {
             </>
           }
           
-          <Link to="/"><button className='button button-medium'>Back to Movies</button></Link>
+          <Link to="/movie-app"><button className='button button-medium'>Back to Movies</button></Link>
         </div>
       </div>
       }
