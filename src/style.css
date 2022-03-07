@@ -135,7 +135,7 @@ h3 {
 .footer p {
     grid-column: 2 / 3;
     padding: 1.4rem 0;
-    opacity: 65%;
+    opacity: 6.5;
 }
 
 .loading {
@@ -189,12 +189,12 @@ Homepage
     border: none;
     border-radius: .8rem;
     background-color: white;
-    opacity: 80%;
+    opacity: 8;
     transition: opacity .4s ease-in;
 }
 
 .search-form input:focus {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .movies {
@@ -315,7 +315,7 @@ Movie Details Page
 }
 
 .movie-description-title-block span {
-    opacity: 80%;
+    opacity: 8;
     margin-right: 2rem;
 }
 
