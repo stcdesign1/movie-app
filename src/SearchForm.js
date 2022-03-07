@@ -17,7 +17,7 @@ const SearchForm = ({setSearchTerm}) => {
   }
 
   return (
-    <form onSubmit={e => handleSubmit(e)} className='search-form'>
+    <form onSubmit={e => handleSubmit(e)} className='search-form' name='search' data-netlify='true'>
       <input value={searchInput} type="text" onChange={e => setSearchInput(e.currentTarget.value)} aria-label="search term" />
       <button className='button button-large' type="submit" aria-label="search">Search</button>
     </form>
