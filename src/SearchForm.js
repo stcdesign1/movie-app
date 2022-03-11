@@ -18,7 +18,6 @@ const SearchForm = ({setSearchTerm}) => {
 
   return (
     <form onSubmit={e => handleSubmit(e)} className='search-form'>
-      {/* <input type='hidden' name='form-name' value='search' /> */}
       <input value={searchInput} type='text' onChange={e => setSearchInput(e.currentTarget.value)} aria-label='search term' />
       <button className='button button-large' type='submit' aria-label='search'>Search</button>
     </form>
