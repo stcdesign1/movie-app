@@ -16,6 +16,16 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
+  // function infiniteScroll() {
+  //   if ((window.scrollY + window.innerHeight) >= window.document.body.scrollHeight) {
+  //     console.log(window.scrollY)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', infiniteScroll)
+  // })
+
   useEffect(() => {
     sessionStorage.setItem("searchTerm", JSON.stringify(searchTerm));
   }, [searchTerm])
@@ -40,8 +50,13 @@ const Home = () => {
         <h1>Search for Movies</h1>
         <Form setSearchTerm={setSearchTerm}/>
       </div>
-      {error && <p>There was an error loading your data!</p>}
-      {loading ? <Loading /> : <Movies movieData={searchData}/>}
+      {
+        error 
+        ? <p className='error'>There was an error loading your data!</p>
+        : loading 
+          ? <Loading /> 
+          : <Movies movieData={searchData}/>
+      }
     </div>
     <Footer />
     </>

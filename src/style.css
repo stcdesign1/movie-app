@@ -148,6 +148,14 @@ svg path {
     fill: var(--primary-light)
 }
 
+.error {
+    margin-top: -6rem;
+    margin-bottom: 3rem;
+    grid-column: 2 / 3;
+    font-weight: 600;
+    color: var(--primary-light);
+}
+
 /*
 =============== 
 Homepage
