@@ -15,32 +15,47 @@ const Home = () => {
   const [searchData, setSearchData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
 
-  // function infiniteScroll() {
-  //   if ((window.scrollY + window.innerHeight) >= window.document.body.scrollHeight) {
-  //     console.log(window.scrollY)
-  //   }
-  // }
+  function infiniteScroll() {
+    if ((window.scrollY + window.innerHeight) >= window.document.body.scrollHeight) {
+      if ((totalResults - searchData.length) >= 10) {
+        setPage(page + 1);
+      }
+    }
+  }
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', infiniteScroll)
-  // })
+  useEffect(() => {
+    window.addEventListener('scroll', infiniteScroll);
+    return () => window.removeEventListener('scroll', infiniteScroll)
+  })
 
   useEffect(() => {
     sessionStorage.setItem("searchTerm", JSON.stringify(searchTerm));
   }, [searchTerm])
 
+
   useEffect(() => {
     setLoading(true);
-    fetch(`${url}&s=${searchTerm}&type=movie`)
+    fetch(`${url}&s=${searchTerm}&type=movie&page=${page}`)
     .then(response => {if (!response.ok) throw new Error(response.status); return response})
     .then(response => response.json())
-    .then(data => setSearchData(data.Search))
+    .then(data => {
+      setTotalResults(parseInt(data.totalResults));
+      if (page === 1) {
+        setSearchData(data.Search);
+      } else {
+        setSearchData(previousData => {
+          return [...previousData, ...data.Search]
+        });
+      }
+    })
     .catch((error) => {
       setError(error);
     })
     setLoading(false);
-  }, [searchTerm])
+  }, [searchTerm, page])
 
   return (
     <>
@@ -48,7 +63,7 @@ const Home = () => {
       <Header />
       <div className='home-header'>
         <h1>Search for Movies</h1>
-        <Form setSearchTerm={setSearchTerm}/>
+        <Form setSearchTerm={setSearchTerm} setPage={setPage}/>
       </div>
       {
         error 

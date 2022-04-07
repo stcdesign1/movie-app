@@ -29,7 +29,7 @@ const Movies = ({movieData}) => {
                 : <img src={movie.Poster} alt='movie poster' />}
                 <h3>{movie.Title}</h3>
                 <p>{movie.Year}</p>
-              </Link>
+            </Link>
         )
       })}
       </div>

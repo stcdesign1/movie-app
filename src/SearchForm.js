@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const SearchForm = ({setSearchTerm}) => {
+const SearchForm = ({setSearchTerm, setPage}) => {
   const [searchInput, setSearchInput] = useState(() => {
     let storedValue = JSON.parse(sessionStorage.getItem("searchInput"));
     return storedValue || "";
@@ -13,7 +13,8 @@ const SearchForm = ({setSearchTerm}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!searchInput) return;
-    setSearchTerm(searchInput)
+    setSearchTerm(searchInput);
+    setPage(1);
   }
 
   return (
